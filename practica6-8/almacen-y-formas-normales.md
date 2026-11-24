@@ -1,1 +1,28 @@
-a
+# Ejercicio 1.4. El almacén asignado, frente a las formas normales
+
+Analizamos el esquema dimensional del proyecto asignado (**`PublicMunicipalWorks_DWH`**, definido en `db/arquitectura/ESQUEMA DEL DATA WAREHOUSE.sql`), el cual cuenta con **diez tablas de dimensión** alrededor de dos tablas de hechos (`fact_eventos_auditoria` y `fact_obra_mensual`).
+
+Todas las dimensiones tienen una clave primaria sustituta simple (`*_key`), por lo que no pueden tener dependencias parciales y **están en 2FN**. Sin embargo, están **desnormalizadas a propósito en 2FN** (no pasan a 3FN) porque guardan jerarquías, catálogos o historial SCD Tipo 2 dentro de la misma tabla.
+
+---
+
+## 1. Forma normal y dependencias transitivas de cada dimensión
+
+| Dimensión | Forma normal | Dependencia transitiva que conserva ($\text{PK} \to Y \to Z$) | ¿Qué gana el almacén al conservarla? |
+| :--- | :---: | :--- | :--- |
+| **`dim_tiempo`** | **2FN** | `tiempo_key -> fecha -> mes -> trimestre -> anio -> periodo_fiscal`<br>`mes -> mes_nombre, mes_nombre_corto`<br>`dia_semana -> dia_nombre, es_fin_de_semana, es_dia_habil` | Permite filtrar y agrupar hechos por año, trimestre, mes, periodo fiscal o días hábiles con un solo `JOIN`, sin tener tablas separadas para meses o trimestres. |
+| **`dim_tipo_evento`** | **2FN** | `tipo_evento_key -> subcategoria -> categoria, tabla_origen`<br>*(ej. la subcategoría `'presupuesto'` determina la categoría `'financiero'` y la tabla `'presupuesto_obra'`)* | Agrupa eventos de auditoría por categoría (`administrativo`, `financiero`, `tecnico`, `ciudadano`, `seguridad`) directamente sin unir otra tabla catálogo. |
+| **`dim_obra`** | **2FN** | `obra_key -> etapa -> etapa_nombre` *(ej. `1 -> 'Planeación'`)*<br>`obra_key -> estado -> estado_nombre` *(`TRUE -> 'Activa'`)*<br>`obra_key -> (fecha_inicio, fecha_final) -> duracion_programada_dias`<br>`obra_key -> obra_id -> codigo_expediente` *(entre versiones SCD 2)* | Muestra el nombre de la etapa, estado y duración programada directamente en los tableros (`v_obras_retraso`) sin hacer cálculos ni `JOIN`s adicionales, y conserva la foto histórica de cada versión de la obra. |
+| **`dim_region`** | **2FN** | `region_key -> colonia -> barrio -> comunidad`<br>*(jerarquía geográfica municipal, además de `region_id -> comunidad, barrio` en sus versiones SCD 2)* | Permite resumir obras y presupuestos por comunidad o barrio de inmediato, evitando partir la geografía en 3 tablas encadenadas (esquema copo de nieve). |
+| **`dim_constructora`** | **2FN** | `constructora_key -> constructora_id -> rfc -> nombre_const, tipo_ejecutor`<br>*(al ser SCD Tipo 2, `constructora_id` y `rfc` no son superclaves porque una empresa tiene varias filas históricas)* | Conserva el historial de cambios de la constructora a lo largo del tiempo y permite consultar su RFC, nombre y tipo de ejecutor en el momento exacto del hecho. |
+| **`dim_personal`** | **2FN** | `personal_key -> rol -> es_supervisor, es_proyectista, es_director, es_secretario`<br>`personal_key -> constructora_asignada -> empresa` | Aplana la jerarquía de roles del esquema operacional (`personal`, `supervisor`, `proyectista`) en una sola dimensión y permite filtrar con banderas booleanas rápidas (`WHERE es_supervisor = TRUE`). |
+| **`dim_fuente`** | **2FN** | `fuente_key -> programa -> grado_nivel`<br>*(cada programa como FAIS o FORTAMUN pertenece a un nivel de gobierno: Federal, Estatal o Municipal)* | En reportes como `v_ejercicio_presupuestario`, agrupa el dinero ejercido por nivel de gobierno y programa leyendo una sola tabla. |
+| **`dim_presupuesto`** | **2FN** | `presupuesto_key -> presupuesto_id -> proyectista_key`<br>*(en las distintas versiones SCD Tipo 2 de un mismo presupuesto, el folio `presupuesto_id` determina al proyectista autor)* | Permite auditar cómo cambió el monto de un presupuesto entre versiones sabiendo de inmediato qué proyectista lo registró. |
+| **`dim_poblador`** | **2FN** | `poblador_key -> curp -> nombre_completo`<br>*(en el DDL de la dimensión, `curp` no está declarada como clave candidata `UNIQUE`, aunque identifica a la persona)* | Cruza los eventos de votación ciudadana con el nombre y comunidad del habitante en un solo paso. |
+| **`dim_propuesta`** | **2FN** | `propuesta_key -> poblador_key -> region`<br>*(la propuesta guarda directamente en texto la `region`/comunidad para no pasar por `dim_poblador` ni `dim_region`)* | La vista `v_participacion_ciudadana` puede contar propuestas y votos agrupados por `region` leyendo solo `dim_propuesta` y la tabla de hechos, ahorrando dos `JOIN`s. |
+
+---
+
+## 2. ¿Cuándo conviene desnormalizar y qué tendríamos que vigilar en nuestro proyecto propio?
+
+Conviene desnormalizar **únicamente en sistemas analíticos o de reportes (Data Warehouses / OLAP)** donde las lecturas masivas con agrupaciones (`GROUP BY`) dominan sobre las escrituras y donde los datos se insertan mediante procesos controlados (triggers o lotes ETL), porque ahí eliminar `JOIN`s mejora drásticamente el tiempo de respuesta de los tableros. En cambio, en un sistema transaccional (OLTP) como nuestro proyecto propio **ERGON**, donde todo el día se registran pedidos, se actualizan precios y se despachan envíos, desnormalizar es riesgoso; si decidiéramos hacerlo (por ejemplo, volver a meter `tipoProducto` en `producto`, o guardar `ciudad, estado, pais` directo en `sucursal`, o guardar `montoTotalUSD` en `pedido`), tendríamos que vigilar estrictamente las **anomalías de actualización** mediante **triggers o transacciones automáticas** que actualicen todas las filas repetidas al mismo tiempo, además de agregar **restricciones `CHECK` o llaves foráneas compuestas** (como la que pusimos entre `envio` y `pedido` para `numeroCliente`) para impedir que un cambio parcial deje datos contradictorios en la base.

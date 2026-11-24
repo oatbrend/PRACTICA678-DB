@@ -1,1 +1,208 @@
-a
+group: Proyecto Propio ERGON (Esquema Normalizado 3FN/BCNF)
+description: Muestra de 10 a 30 filas por tabla con integridad referencial completa.
+
+modelo_producto = {
+  modeloproducto:string, tipoproducto:string
+  'HYGOLD 100', 'OMNIGOLD'
+  'HYGOLD 5000BS', 'OMNIGOLD'
+  'HYGOLD L-2000', 'OMNIGOLD'
+  'HYPRENE BO150', 'HYPRENE'
+  'HYPRENE L2000', 'HYPRENE'
+  'HYPRENE P150 BS', 'HYPRENE'
+  'HYVOLT II', 'HYVOLT'
+  'OMNIGOLD A12', 'OMNIGOLD'
+  'OMNIGOLD P100N', 'OMNIGOLD'
+  'OMNIGOLD P220N', 'OMNIGOLD'
+}
+
+producto = {
+  claveproducto:string, modeloproducto:string, costounitariousd:number, preciounitariousd:number, provmaquinaria:string, provtransformador:string, provtransporte:string
+  'HG5-01', 'HYGOLD 5000BS', 1267.79, 1844.93, 'Mazak Latinoamérica', null, null
+  'HG5-02', 'HYGOLD 5000BS', 1617.12, 2044.88, 'Siemens Maquinaria', null, null
+  'HG5-03', 'HYGOLD 5000BS', 1808.03, 2582.09, 'Fanuc México', null, null
+  'HG5-04', 'HYGOLD 5000BS', 2078.85, 2747.9, 'Mazak Latinoamérica', null, null
+  'HGL-04', 'HYGOLD L-2000', 1234.61, 1740.95, 'Siemens Maquinaria', null, null
+  'HP1-02', 'HYPRENE P150 BS', 114.71, 162, null, null, 'Maersk Logistics MX'
+  'HPB-01', 'HYPRENE BO150', 124.57, 165.99, null, null, 'Fletes Del Bravo'
+  'HPB-02', 'HYPRENE BO150', 143.82, 176.18, null, null, 'Tráileres Monterrey'
+  'HPB-03', 'HYPRENE BO150', 173.99, 224.65, null, null, 'Tres Guerras Logística'
+  'HPB-04', 'HYPRENE BO150', 194.7, 249.05, null, null, 'Tres Guerras Logística'
+  'HPL-01', 'HYPRENE L2000', 203.72, 277.75, null, null, 'Tráileres Monterrey'
+  'HV2-01', 'HYVOLT II', 1893.94, 2742.7, null, 'Transformadores del Norte', null
+  'HV2-02', 'HYVOLT II', 2328.74, 3377.28, null, 'Schneider Electric MX', null
+  'HV2-03', 'HYVOLT II', 2560.84, 3424.9, null, 'Prolec GE', null
+  'HV2-04', 'HYVOLT II', 3065.07, 3868.94, null, 'Hammond Power', null
+  'OA1-01', 'OMNIGOLD A12', 413.02, 585.42, 'Mazak Latinoamérica', null, null
+  'OA1-02', 'OMNIGOLD A12', 529.23, 723.74, 'Haas Automation', null, null
+  'OA1-03', 'OMNIGOLD A12', 613.34, 768.3, 'Fanuc México', null, null
+  'OA1-04', 'OMNIGOLD A12', 720.28, 1028.79, 'Bosch Rexroth MX', null, null
+}
+
+cliente = {
+  numerocliente:number, razonsocial:string, correocliente:string, telefonocliente:string, tipocliente:string, rfc:string, regimenfiscal:string, estadoorigen:string, idfiscalglobal:string, paisreceptor:string
+  1001, 'Distribuidora Metrópoli S.A.B. de C.V.', 'ventas@distribuidorametropoli.com.mx', '+52 33 2485 9825', 'NACIONAL', 'SGF13092864L', '601 - General de Ley Personas Morales', 'Tamaulipas', null, null
+  1002, 'Eléctrica Nova S.A. de C.V.', 'compras@electricanova.com.mx', '+52 222 4963 1492', 'NACIONAL', 'XTU100821KA7', '601 - General de Ley Personas Morales', 'Jalisco', null, null
+  1003, 'Eléctrica Cobalto S.A.P.I. de C.V.', 'pedidos@electricacobalto.com.mx', '+52 442 7664 2363', 'NACIONAL', 'GQH131027S5A', '601 - General de Ley Personas Morales', 'Ciudad de México', null, null
+  1004, 'Cables Andes S.A.P.I. de C.V.', 'compras@cablesandes.com.mx', '+52 55 1008 4498', 'NACIONAL', 'ACS990910GZG', '612 - Personas Físicas con Actividades Empresariales y Profesionales', 'Aguascalientes', null, null
+  1008, 'Manufacturas Cobalto S.A.P.I. de C.V.', 'compras@manufacturascobalto.com.mx', '+52 664 7040 7089', 'NACIONAL', 'JMC851011EFN', '601 - General de Ley Personas Morales', 'Coahuila', null, null
+  1014, 'Distribuidora Polaris S.A.P.I. de C.V.', 'compras@distribuidorapolaris.com.mx', '+52 844 1495 9190', 'NACIONAL', 'WEZ871224VWF', '601 - General de Ley Personas Morales', 'Yucatán', null, null
+  1019, 'Distribuidora Andes S. de R.L. de C.V.', 'ventas@distribuidoraandes.com.mx', '+52 664 1679 5605', 'NACIONAL', 'QPV110721U2U', '601 - General de Ley Personas Morales', 'Jalisco', null, null
+  1026, 'Energía Nexus S.A.P.I. de C.V.', 'pedidos@energianexus.com.mx', '+52 222 7735 9780', 'NACIONAL', 'TGJ041113J87', '612 - Personas Físicas con Actividades Empresariales y Profesionales', 'Hidalgo', null, null
+  1031, 'Plásticos Polaris S. de R.L. de C.V.', 'compras@plasticospolaris.com.mx', '+52 33 4921 3171', 'NACIONAL', 'ZLF991221UUM', '603 - Personas Morales con Fines no Lucrativos', 'Guanajuato', null, null
+  1037, 'Plásticos Ópalo S.A.B. de C.V.', 'compras@plasticosopalo.com.mx', '+52 477 5942 8681', 'NACIONAL', 'WLY9306181LZ', '603 - Personas Morales con Fines no Lucrativos', 'Querétaro', null, null
+  1049, 'Soluciones Lumen S.A.P.I. de C.V.', 'abastecimiento@solucioneslumen.com.mx', '+52 81 8077 8943', 'NACIONAL', 'XFN030925XG3', '612 - Personas Físicas con Actividades Empresariales y Profesionales', 'Ciudad de México', null, null
+  1052, 'Manufacturas Norte S.A.P.I. de C.V.', 'contacto@manufacturasnorte.com.mx', '+52 664 3904 3893', 'NACIONAL', 'VMS080112YMX', '601 - General de Ley Personas Morales', 'Michoacán', null, null
+  1065, 'Energía Atlas Ltd.', 'ventas@energiaatlas.net', '+82 518 515 2245', 'EXPORTACION', null, null, null, 'CO-76328136', 'Corea del Sur'
+  1071, 'Tecnologías Norte LLC', 'contacto@tecnologiasnorte.com', '+1 384 297 7590', 'EXPORTACION', null, null, null, 'CA-28900871', 'Canadá'
+}
+
+estado_ubicacion = {
+  estado:string, pais:string
+  'Aguascalientes', 'México'
+  'Ciudad de México', 'México'
+  'Coahuila', 'México'
+  'Daegu', 'Corea del Sur'
+  'Durango', 'México'
+  'Guanajuato', 'México'
+  'Hidalgo', 'México'
+  'Jalisco', 'México'
+  'Michoacán', 'México'
+  'Quebec', 'Canadá'
+  'Querétaro', 'México'
+  'San Luis Potosí', 'México'
+  'Sinaloa', 'México'
+  'Tamaulipas', 'México'
+  'Veracruz', 'México'
+  'Yucatán', 'México'
+}
+
+ciudad_ubicacion = {
+  ciudad:string, estado:string
+  'Aguascalientes', 'Aguascalientes'
+  'Daegu', 'Daegu'
+  'Durango', 'Durango'
+  'El Marqués', 'Querétaro'
+  'Guadalajara', 'Jalisco'
+  'Iztapalapa', 'Ciudad de México'
+  'Laval', 'Quebec'
+  'León', 'Guanajuato'
+  'Lázaro Cárdenas', 'Michoacán'
+  'Matamoros', 'Tamaulipas'
+  'Mazatlán', 'Sinaloa'
+  'Mérida', 'Yucatán'
+  'Pachuca', 'Hidalgo'
+  'Tlaquepaque', 'Jalisco'
+  'Torreón', 'Coahuila'
+  'Veracruz', 'Veracruz'
+  'Villa de Reyes', 'San Luis Potosí'
+}
+
+sucursal = {
+  numerocliente:number, clavesucursal:string, nombreplanta:string, telefonoencargado:string, calle:string, numero:string, ciudad:string, cp:string
+  1001, 'S01', 'Complejo Matamoros Norte', '+52 477 9800 4353', 'Av. Industrial', '2861A', 'Matamoros', '09716'
+  1002, 'S01', 'Planta Tlaquepaque I', '+52 222 9180 7688', 'Calle Zaragoza', '2914A', 'Tlaquepaque', '10168'
+  1003, 'S01', 'Bodega Iztapalapa I', null, 'Calle Zaragoza', '5853-2', 'Iztapalapa', '02321'
+  1004, 'S01', 'Unidad Productiva Aguascalientes II', null, 'Av. Industrial', '3479-2', 'Aguascalientes', '81775'
+  1004, 'S02', 'Unidad Productiva Lázaro Cárdenas III', '+52 477 3725 6842', 'Blvd. de las Naciones', '9492-2', 'Lázaro Cárdenas', '81264'
+  1004, 'S03', 'Planta Veracruz III', null, 'Blvd. de las Naciones', '4762A', 'Veracruz', '88258'
+  1008, 'S01', 'Unidad Productiva Torreón I', '+52 656 7587 1859', 'Blvd. Central', '2076B', 'Torreón', '15555'
+  1014, 'S01', 'Unidad Productiva Mérida Oriente', '+52 844 7196 1251', 'Blvd. Central', '5564A', 'Mérida', '83537'
+  1019, 'S01', 'Planta de Ensamble Guadalajara II', '+52 664 2926 5667', 'Calle Reforma', '4694', 'Guadalajara', '89694'
+  1019, 'S02', 'Planta Mazatlán Sur', '+52 55 2256 6069', 'Calle Zaragoza', '8255', 'Mazatlán', '22015'
+  1019, 'S03', 'Bodega Durango Norte', '+52 55 3725 5985', 'Av. Industrial', '5515A', 'Durango', '82101'
+  1026, 'S01', 'Unidad Productiva Pachuca Sur', null, 'Calle Reforma', '7574B', 'Pachuca', '86991'
+  1031, 'S01', 'Centro de Distribución León II', '+52 222 8400 3788', 'Carretera Libre', '1713B', 'León', '19042'
+  1037, 'S01', 'Planta El Marqués Norte', '+52 662 2011 3674', 'Carretera Libre', '6262-2', 'El Marqués', '43296'
+  1049, 'S01', 'Unidad Productiva Iztapalapa III', '+52 844 9380 8892', 'Calle Reforma', '9004', 'Iztapalapa', '77784'
+  1052, 'S01', 'Planta de Ensamble Lázaro Cárdenas II', '+52 442 2051 5174', 'Av. Revolución', '3986', 'Lázaro Cárdenas', '57718'
+  1052, 'S02', 'Bodega León Norte', '+52 664 7562 9902', 'Av. Industrial', '4617', 'León', '06963'
+  1052, 'S03', 'Complejo Villa de Reyes III', '+52 656 4823 3664', 'Calle Juárez', '8338-2', 'Villa de Reyes', '38834'
+  1065, 'S01', 'Planta Daegu I', '+82 402 821 2666', 'Av. Revolución', '2286B', 'Daegu', '26283'
+  1071, 'S01', 'Unidad Productiva Laval Oriente', null, 'Av. Revolución', '2879', 'Laval', '20656'
+}
+
+transportista = {
+  clavetransportista:string, nombreempresa:string, telefonoatencion:string, email:string, esnacional:boolean, esinternacional:boolean, rfc:string, codigoaduanal:string, agenciaaduanal:string
+  'TR001', 'Logística Unidos S.A. de C.V.', '+52 662 7508 3314', 'atencion@logisticaunidos.com.mx', true, false, 'HBJ071219B3U', null, null
+  'TR002', 'Express Peninsular S.A. de C.V.', null, 'atencion@expresspeninsular.com.mx', true, false, 'JWB150407MUW', null, null
+  'TR003', 'Distribución Rápidos S.A. de C.V.', '+52 662 4309 9734', 'atencion@distribucionrapidos.com.mx', true, false, 'UDJ000402UR0', null, null
+  'TR004', 'Logística Peninsular S.A. de C.V.', null, 'atencion@logisticapeninsular.com.mx', true, false, 'FHJ130703HMR', null, null
+  'TR005', 'Logística del Pacífico S.A. de C.V.', '+52 442 7103 9591', 'atencion@logisticadelpacifico.com.mx', true, true, 'HJF921017ORI', 'VER-8581', 'Grupo Aduanero del Norte'
+  'TR006', 'Distribución Rutas Azules S.A. de C.V.', '+52 55 1114 5661', 'atencion@distribucionrutasazules.com.mx', true, false, 'SCF010726SMP', null, null
+  'TR007', 'Logística Global S.A. de C.V.', '+52 33 1550 8563', 'atencion@logisticaglobal.com.mx', true, false, 'BFC0901169XU', null, null
+  'TR012', 'Transportes del Pacífico S.A. de C.V.', '+52 662 5337 9164', 'atencion@transportesdelpacifico.com.mx', true, false, 'QFM901127QPK', null, null
+  'TR013', 'Distribución del Pacífico S.A. de C.V.', '+52 656 2001 6174', 'atencion@distribuciondelpacifico.com.mx', true, false, 'WGW110812CI5', null, null
+  'TR015', 'Fletes Rápidos S.A. de C.V.', '+52 664 4766 5844', 'atencion@fletesrapidos.com.mx', true, false, 'HNO010218FOX', null, null
+  'TR016', 'Carga Rápidos S.A. de C.V.', '+52 55 6623 3904', 'atencion@cargarapidos.com.mx', true, false, 'GMM140727DN0', null, null
+  'TR021', 'Carga del Bajío S.A. de C.V.', '+52 222 6116 7728', 'atencion@cargadelbajio.com.mx', true, false, 'WEQ1208189QU', null, null
+  'TR025', 'Carga Panamericana Intl.', '+52 844 3470 8836', 'atencion@cargapanamericana.com.mx', false, true, null, 'GUA-5210', 'Soluciones Aduanales Altamira'
+  'TR027', 'Cargo Rutas Azules S.A. de C.V.', '+52 477 6300 7115', 'atencion@cargorutasazules.com.mx', true, false, 'VFU0405274YV', null, null
+  'TR030', 'Distribución Peninsular S.A. de C.V.', '+52 664 4153 5420', 'atencion@distribucionpeninsular.com.mx', true, false, 'HHQ990522A8Z', null, null
+}
+
+pedido = {
+  folio:number, numerocliente:number, estatus:string, dia:number, mes:number, anio:number, activo:boolean
+  100001, 1026, 'ENTREGADO', 2, 1, 2025, true
+  100002, 1052, 'ENTREGADO', 3, 1, 2025, true
+  100003, 1052, 'CANCELADO', 6, 1, 2025, false
+  100004, 1008, 'ENTREGADO', 6, 1, 2025, true
+  100010, 1071, 'ENTREGADO', 17, 1, 2025, true
+  100016, 1052, 'ENTREGADO', 28, 1, 2025, true
+  100023, 1031, 'CANCELADO', 6, 2, 2025, false
+  100031, 1004, 'ENTREGADO', 20, 2, 2025, true
+  100036, 1052, 'ENTREGADO', 24, 2, 2025, true
+  100042, 1052, 'ENTREGADO', 6, 3, 2025, true
+  100044, 1052, 'ENTREGADO', 10, 3, 2025, true
+  100059, 1019, 'ENTREGADO', 31, 3, 2025, true
+  100136, 1037, 'ENTREGADO', 14, 7, 2025, true
+  100245, 1049, 'ENTREGADO', 28, 11, 2025, true
+  100281, 1037, 'CANCELADO', 4, 2, 2026, false
+}
+
+detalle = {
+  folio:number, claveparcial:number, claveproducto:string, costoproduccion:number, precioaplicado:number, cantidad:number
+  100001, 1, 'OA1-01', 422.11, 556.15, 174
+  100001, 3, 'HPB-02', 148, 167.37, 66
+  100002, 1, 'HV2-04', 2992.76, 3752.87, 2
+  100003, 1, 'HV2-04', 2982.48, 3752.87, 7
+  100003, 3, 'HG5-02', 1631.37, 1983.53, 32
+  100004, 3, 'HG5-04', 2150.41, 2528.07, 245
+  100004, 4, 'OA1-04', 711.71, 946.49, 63
+  100010, 1, 'HV2-03', 2567.79, 3322.15, 1
+  100016, 1, 'HV2-03', 2645.3, 3322.15, 4
+  100023, 1, 'HPB-02', 146.02, 176.18, 56
+  100023, 2, 'HG5-04', 2027.98, 2747.9, 297
+  100023, 3, 'HPL-01', 198.91, 277.75, 201
+  100031, 3, 'HPL-01', 198.66, 249.97, 600
+  100031, 7, 'HPB-02', 145.15, 158.56, 34
+  100036, 1, 'HV2-04', 3148.55, 3752.87, 3
+  100036, 2, 'HPB-03', 171.97, 217.91, 163
+  100042, 1, 'HPB-01', 122.9, 161.01, 31
+  100042, 3, 'HPB-03', 178.74, 217.91, 38
+  100044, 2, 'HV2-04', 3133.88, 3752.87, 2
+  100044, 3, 'HPB-01', 125.53, 161.01, 89
+  100136, 3, 'HV2-03', 2530.55, 3253.65, 2
+  100136, 4, 'HPB-04', 199.24, 236.6, 72
+  100136, 5, 'HPB-03', 169.88, 213.42, 350
+  100245, 4, 'HPB-03', 169.84, 213.42, 508
+  100245, 5, 'HV2-01', 1934.86, 2605.56, 5
+  100245, 8, 'HPB-04', 193.06, 236.6, 96
+  100281, 1, 'HPB-02', 148.66, 167.37, 194
+  100281, 2, 'HPB-01', 127.04, 157.69, 122
+}
+
+envio = {
+  numeroguia:string, folio:number, clavetransportista:string, numerocliente:number, clavesucursal:string, costoflete:number, dia:number, mes:number, anio:number
+  'GU937557166733', 100001, 'TR030', 1026, 'S01', 3982.88, 8, 1, 2025
+  'GU309405377382', 100002, 'TR012', 1052, 'S03', 178.59, 6, 1, 2025
+  'GU635074827946', 100004, 'TR016', 1008, 'S01', 11919.8, 9, 1, 2025
+  'GU449737058962', 100010, 'TR025', 1071, 'S01', 270, 22, 1, 2025
+  'GU710974806253', 100016, 'TR015', 1052, 'S01', 623.59, 3, 2, 2025
+  'GU921438701196', 100031, 'TR021', 1004, 'S03', 13300.51, 24, 2, 2025
+  'GU928685674814', 100036, 'TR013', 1052, 'S01', 1593.82, 3, 3, 2025
+  'GU171879363800', 100042, 'TR027', 1052, 'S01', 2612.95, 10, 3, 2025
+  'GU332522592737', 100044, 'TR004', 1052, 'S02', 8161.47, 11, 3, 2025
+  'GU844047803023', 100059, 'TR007', 1019, 'S03', 7496.83, 3, 4, 2025
+  'GU659155367318', 100136, 'TR001', 1037, 'S01', 8569.55, 17, 7, 2025
+  'GU808281134317', 100245, 'TR007', 1049, 'S01', 36009.7, 1, 12, 2025
+}

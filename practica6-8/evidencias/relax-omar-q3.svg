@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="364" viewBox="0 0 920 364">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="15" y="15" width="890" height="55" rx="6" fill="#1e293b"/>
+<text x="30" y="38" fill="#f8fafc" font-family="Consolas, monospace" font-size="15" font-weight="bold">RelaX - relational algebra calculator — Omar Q3: Reunión Natural ⋈ y Agrupación γ por Línea Comercial</text>
+<text x="30" y="58" fill="#93c5fd" font-family="Consolas, monospace" font-size="12">gamma tipoproducto; count(claveproducto)-&gt;total_productos, sum(preciounitariousd)-&gt;suma_precios, avg(preciounitario</text>
+<rect x="60" y="90" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="111" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">γ tipoproducto; count(...)→total_productos, sum(...)→suma_precios, avg(...)→promedio_precio</text>
+<line x1="460" y1="122" x2="460" y2="135" stroke="#0284c7" stroke-width="2"/>
+<rect x="60" y="135" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="156" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">⋈ (producto ⋈ modelo_producto)</text>
+<rect x="40" y="190" width="840" height="28" fill="#334155"/>
+<text x="52" y="209" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">tipoproducto</text>
+<text x="262" y="209" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">total_productos</text>
+<text x="472" y="209" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">suma_precios</text>
+<text x="682" y="209" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">promedio_precio</text>
+<rect x="40" y="218" width="840" height="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="236" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYPRENE</text>
+<text x="262" y="236" fill="#1e293b" font-family="Consolas, monospace" font-size="12">4</text>
+<text x="472" y="236" fill="#1e293b" font-family="Consolas, monospace" font-size="12">815.87</text>
+<text x="682" y="236" fill="#1e293b" font-family="Consolas, monospace" font-size="12">203.97</text>
+<rect x="40" y="244" width="840" height="26" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="262" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYVOLT</text>
+<text x="262" y="262" fill="#1e293b" font-family="Consolas, monospace" font-size="12">4</text>
+<text x="472" y="262" fill="#1e293b" font-family="Consolas, monospace" font-size="12">13413.82</text>
+<text x="682" y="262" fill="#1e293b" font-family="Consolas, monospace" font-size="12">3353.45</text>
+</svg>
