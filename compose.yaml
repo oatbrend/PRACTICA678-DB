@@ -1,21 +1,42 @@
 services:
   db:
     image: postgres:17
-    container_name: pg-practica4-5
+    container_name: pg-practica6-8
     environment:
-      POSTGRES_DB: ventas_industriales
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?define POSTGRES_PASSWORD en .env}
+      POSTGRES_DB: ${POSTGRES_DB:-ventas_industriales}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ergon_test_pwd_2026}
     ports:
-      - "127.0.0.1:5434:5432"
+      - "127.0.0.1:${DB_PORT:-5434}:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./esquema.sql:/docker-entrypoint-initdb.d/01-esquema.sql:ro
+      - pgdata_p68:/var/lib/postgresql/data
+      - ./practica6-8/migraciones/000-esquema-base.sql:/docker-entrypoint-initdb.d/00-esquema-base.sql:ro
+      - ./practica6-8/migraciones/001-dominios.sql:/docker-entrypoint-initdb.d/01-dominios.sql:ro
+      - ./practica6-8/migraciones/002-referencias.sql:/docker-entrypoint-initdb.d/02-referencias.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d ventas_industriales"]
-      interval: 5s
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-ventas_industriales}"]
+      interval: 3s
       timeout: 3s
-      retries: 12
+      retries: 15
+
+  consultas:
+    image: python:3.12-slim
+    container_name: runner-practica6-8
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: ${POSTGRES_DB:-ventas_industriales}
+      DB_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ergon_test_pwd_2026}
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    command: >
+      sh -c "pip install --quiet --no-cache-dir psycopg2-binary &&
+             python practica6-8/ejecutar-practica.py"
 
 volumes:
-  pgdata:
+  pgdata_p68:

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="409" viewBox="0 0 920 409">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="15" y="15" width="890" height="55" rx="6" fill="#1e293b"/>
+<text x="30" y="38" fill="#f8fafc" font-family="Consolas, monospace" font-size="15" font-weight="bold">RelaX - relational algebra calculator — Consulta 9: Reunión Theta ⋈_θ</text>
+<text x="30" y="58" fill="#93c5fd" font-family="Consolas, monospace" font-size="12">P_cuatro join p.folio = e.folio and e.costoflete &gt; 3000 E_cuatro</text>
+<rect x="60" y="90" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="111" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">π p.folio, p.numerocliente, p.estatus, e.numeroguia, e.clavetransportista, e.costoflete</text>
+<line x1="460" y1="122" x2="460" y2="135" stroke="#0284c7" stroke-width="2"/>
+<rect x="60" y="135" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="156" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">⋈ (p.folio = e.folio ∧ e.costoflete &gt; 3000)</text>
+<line x1="460" y1="167" x2="460" y2="180" stroke="#0284c7" stroke-width="2"/>
+<rect x="60" y="180" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="201" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">ρ p (σ folio ≤ 100004 (pedido))   |   ρ e (σ folio ≤ 100004 (envio))</text>
+<rect x="40" y="235" width="840" height="28" fill="#334155"/>
+<text x="52" y="254" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">p.folio</text>
+<text x="192" y="254" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">p.numerocliente</text>
+<text x="332" y="254" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">p.estatus</text>
+<text x="472" y="254" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">e.numeroguia</text>
+<text x="612" y="254" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">e.clavetransportista</text>
+<text x="752" y="254" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">e.costoflete</text>
+<rect x="40" y="263" width="840" height="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="281" fill="#1e293b" font-family="Consolas, monospace" font-size="12">100001</text>
+<text x="192" y="281" fill="#1e293b" font-family="Consolas, monospace" font-size="12">1026</text>
+<text x="332" y="281" fill="#1e293b" font-family="Consolas, monospace" font-size="12">ENTREGADO</text>
+<text x="472" y="281" fill="#1e293b" font-family="Consolas, monospace" font-size="12">GU937557166733</text>
+<text x="612" y="281" fill="#1e293b" font-family="Consolas, monospace" font-size="12">TR030</text>
+<text x="752" y="281" fill="#1e293b" font-family="Consolas, monospace" font-size="12">3982.88</text>
+<rect x="40" y="289" width="840" height="26" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="307" fill="#1e293b" font-family="Consolas, monospace" font-size="12">100004</text>
+<text x="192" y="307" fill="#1e293b" font-family="Consolas, monospace" font-size="12">1008</text>
+<text x="332" y="307" fill="#1e293b" font-family="Consolas, monospace" font-size="12">ENTREGADO</text>
+<text x="472" y="307" fill="#1e293b" font-family="Consolas, monospace" font-size="12">GU635074827946</text>
+<text x="612" y="307" fill="#1e293b" font-family="Consolas, monospace" font-size="12">TR016</text>
+<text x="752" y="307" fill="#1e293b" font-family="Consolas, monospace" font-size="12">11919.8</text>
+</svg>

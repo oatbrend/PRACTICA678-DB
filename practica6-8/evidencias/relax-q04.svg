@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="532" viewBox="0 0 920 532">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="15" y="15" width="890" height="55" rx="6" fill="#1e293b"/>
+<text x="30" y="38" fill="#f8fafc" font-family="Consolas, monospace" font-size="15" font-weight="bold">RelaX - relational algebra calculator — Consulta 4: Unión ∪ (Compatibilidad de unión)</text>
+<text x="30" y="58" fill="#93c5fd" font-family="Consolas, monospace" font-size="12">P_hyvolt union P_hyprene</text>
+<rect x="60" y="90" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="111" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">∪ (Unión)</text>
+<line x1="460" y1="122" x2="460" y2="135" stroke="#0284c7" stroke-width="2"/>
+<rect x="60" y="135" width="800" height="32" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="460" y="156" text-anchor="middle" fill="#0f172a" font-family="Consolas, monospace" font-size="13" font-weight="bold">π claveproducto, modeloproducto (σ modeloproducto=&#x27;HYVOLT II&#x27; (producto))  |  π claveproducto, modeloproducto (σ modeloproducto=&#x27;HYPRENE BO150&#x27; (producto))</text>
+<rect x="40" y="190" width="840" height="28" fill="#334155"/>
+<text x="52" y="209" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">claveproducto</text>
+<text x="472" y="209" fill="#ffffff" font-family="Consolas, monospace" font-size="12" font-weight="bold">modeloproducto</text>
+<rect x="40" y="218" width="840" height="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="236" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HPB-01</text>
+<text x="472" y="236" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYPRENE BO150</text>
+<rect x="40" y="244" width="840" height="26" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="262" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HPB-02</text>
+<text x="472" y="262" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYPRENE BO150</text>
+<rect x="40" y="270" width="840" height="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="288" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HPB-03</text>
+<text x="472" y="288" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYPRENE BO150</text>
+<rect x="40" y="296" width="840" height="26" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="314" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HPB-04</text>
+<text x="472" y="314" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYPRENE BO150</text>
+<rect x="40" y="322" width="840" height="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="340" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HV2-01</text>
+<text x="472" y="340" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYVOLT II</text>
+<rect x="40" y="348" width="840" height="26" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="366" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HV2-02</text>
+<text x="472" y="366" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYVOLT II</text>
+<rect x="40" y="374" width="840" height="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="392" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HV2-03</text>
+<text x="472" y="392" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYVOLT II</text>
+<rect x="40" y="400" width="840" height="26" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="0.5"/>
+<text x="52" y="418" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HV2-04</text>
+<text x="472" y="418" fill="#1e293b" font-family="Consolas, monospace" font-size="12">HYVOLT II</text>
+</svg>
